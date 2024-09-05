@@ -4,35 +4,37 @@
 // POLITEKNIK NEGERI MALANG
 
 #include <iostream>
-#include <algorithm> // Untuk fungsi std::max
+#include <algorithm> 
 
-// Fungsi keanggotaan untuk usia muda
-double membershipYouth(double age) {
-    if (age < 25) {
+using namespace std;
+
+// keanggotaan usia Muda
+double UsiaMuda(double usia) {
+    if (usia < 25) {
         return 1.0;
-    } else if (age >= 25 && age < 40) {
-        return ((40 - age) / (40-25));
+    } else if (usia >= 25 && usia < 40) {
+        return ((40 - usia) / (40-25));
     } else {
         return 0.0;
     }
 }
 
-// Fungsi keanggotaan untuk usia sedang
-double membershipMiddleAged(double age) {
-    if (age > 25 && age <= 40) {
-        return ((age - 25) / (40-25));
-    } else if (age > 40 && age < 55) {
-        return ((55 - age) / (40-25));
+// keanggotaan untuk usia Paruhbaya
+double UsiaParuhbaya(double usia) {
+    if (usia > 25 && usia <= 40) {
+        return ((usia - 25) / (40-25));
+    } else if (usia > 40 && usia < 55) {
+        return ((55 - usia) / (40-25));
     } else {
         return 0.0;
     }
 }
 
-// Fungsi keanggotaan untuk usia tua
-double membershipOld(double age) {
-    if (age > 40 && age <= 55) {
-        return ((age - 40) / (55-40));
-    } else if (age > 55) {
+// keanggotaan untuk usia Tua
+double UsiaTua(double usia) {
+    if (usia > 40 && usia <= 55) {
+        return ((usia - 40) / (55-40));
+    } else if (usia > 55) {
         return 1.0;
     } else {
         return 0.0;
@@ -40,31 +42,31 @@ double membershipOld(double age) {
 }
 
 int main() {
-    double age;
+    double usia;
 
-    // Input usia dari pengguna
-    std::cout << "Masukkan usia: ";
-    std::cin >> age;
+    // Input usia
+    cout << "Masukkan usia: ";
+    cin >> usia;
 
     // Menghitung derajat keanggotaan
-    double youthDegree = membershipYouth(age);
-    double middleAgedDegree = membershipMiddleAged(age);
-    double oldDegree = membershipOld(age);
+    double Muda = UsiaMuda(usia);
+    double Paruhbaya = UsiaParuhbaya(usia);
+    double Tua = UsiaTua(usia);
 
-    // Menentukan kategori usia dengan derajat keanggotaan tertinggi
-    double maxDegree = std::max({youthDegree, middleAgedDegree, oldDegree});
-    std::string category;
+    // Menentukan kategori usia dengan keanggotaan tertinggi
+    double keanggotaan = std::max({Muda, Paruhbaya, Tua});
+    string kategori;
 
-    if (maxDegree == youthDegree) {
-        category = "Usia Muda";
-    } else if (maxDegree == middleAgedDegree) {
-        category = "Usia Sedang";
+    if (keanggotaan == Muda) {
+        kategori = "Muda";
+    } else if (keanggotaan == Paruhbaya) {
+        kategori = "Paruhbaya";
     } else {
-        category = "Usia Tua";
+        kategori = "Tua";
     }
 
     // Menampilkan hasil
-    std::cout << "Kategori usia: " << category << std::endl;
+    cout << "Kategori usia: " << kategori << std::endl;
 
     return 0;
 }
